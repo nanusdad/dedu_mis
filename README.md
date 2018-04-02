@@ -1,3 +1,13 @@
+DEDU MIS
+==================
+### Quick Setup ###
+```shell
+git clone https://github.com/nanusdad/dedu_mis.git
+du -ks dedu_mis
+cd dedu_mis/
+meteor run
+```
+
 Orion Standard example
 ==================
 
