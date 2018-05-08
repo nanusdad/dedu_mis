@@ -24,6 +24,8 @@ Courses = new orion.collection('courses', {
     columns: [
       { data: 'course_name', title: orion.helpers.getTranslation('courses.schema.course_name') },
       { data: 'course_abbrev', title: orion.helpers.getTranslation('courses.schema.course_abbrev') },
+      { data: 'course_fees', title: orion.helpers.getTranslation('courses.schema.course_fees')},
+      { data: 'course_duration', title: orion.helpers.getTranslation('courses.schema.course_duration')},
       /**
        * If you want to show a custom orion attribute in
        * the index table you must call this function
@@ -47,6 +49,27 @@ Courses.attachSchema(new SimpleSchema({
   course_abbrev: {
     type: String,
     label: orion.helpers.getTranslation('courses.schema.course_abbrev') // We use this function to make i18n work in autoform
+  },
+  course_fees: {
+    type: Number,
+    label: orion.helpers.getTranslation('courses.schema.course_fees')
+  },
+  course_duration: {
+    type: Number,
+    label: orion.helpers.getTranslation('courses.schema.course_duration')
+  },
+ course_durationType: {
+    //type: String,
+    //label: orion.helpers.getTranslation('students.schema.gender') // We use this function to make i18n work in autoform
+    //label: "Select One",
+
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_durationType'), // We use this function to make i18n work in autoform
+      allowedValues: [
+        orion.helpers.getTranslation('courses.schema.course_durationTypeAllowedValues.day'),
+        orion.helpers.getTranslation('courses.schema.course_durationTypeAllowedValues.month'),
+        orion.helpers.getTranslation('courses.schema.course_durationTypeAllowedValues.year')
+      ]
   },
   /**
    * The file attribute is a custom orion attribute
