@@ -31,9 +31,74 @@ Students = new orion.collection('students', {
 				title: orion.helpers.getTranslation('students.schema.sname')
 			},
 			{
+				data: 'isactive',
+				title: orion.helpers.getTranslation('students.schema.isactive')
+			},
+			{
+				data: 'admno',
+				title: orion.helpers.getTranslation('students.schema.admno')
+			},
+			{
 				data: 'gender',
 				title: orion.helpers.getTranslation('students.schema.gender')
 			},
+			//Permanent Address:
+			{
+				data: 'Permanent_Addressline1',
+				title: orion.helpers.getTranslation('students.schema.Permanent_Addressline1')
+			},
+			{
+				data: 'Permanent_Addressline2',
+				title: orion.helpers.getTranslation('students.schema.Permanent_Addressline2')
+			},
+			{
+				data:'Permanent_City',
+				title: orion.helpers.getTranslation('students.schema.Permanent_City')
+			},
+			{
+				data:'Permanent_State',
+				title: orion.helpers.getTranslation('students.schema.Permanent_State')
+			},
+			{
+				data:'Permanent_Country',
+				title: orion.helpers.getTranslation('students.schema.Permanent_Country')
+			},
+			{
+				data:'Permanent_Pincode',
+				title: orion.helpers.getTranslation('students.schema.Permanent_Pincode')
+			},
+			//Communication address:
+			{
+				data: 'Communication_Addressline1',
+				title: orion.helpers.getTranslation('students.schema.Communication_Addressline1')
+			},
+			{
+				data: 'Communication_Addressline2',
+				title: orion.helpers.getTranslation('students.schema.Communication_Addressline2')
+			},
+			{
+				data:'Communication_City',
+				title: orion.helpers.getTranslation('students.schema.Communication_City')
+			},
+			{
+				data:'Communication_State',
+				title: orion.helpers.getTranslation('students.schema.Communication_State')
+			},
+			{
+				data:'Communication_Country',
+				title: orion.helpers.getTranslation('students.schema.Communication_Country')
+			},
+			{
+				data:'Communication_Pincode',
+				title: orion.helpers.getTranslation('students.schema.Communication_Pincode')
+			},
+			/*{
+				data: 'residential_address'
+				title: orion.helpers.getTranslation('students.schema.residential_address')
+			},*/
+			
+			
+
 //			{
 //				dropdown: {
 //					type: String,
@@ -69,6 +134,15 @@ Students.attachSchema(new SimpleSchema({
 		type: String,
 		label: orion.helpers.getTranslation('students.schema.sname') // We use this function to make i18n work in autoform
 	},
+	isactive: {
+		type: Boolean,
+		label: orion.helpers.getTranslation('students.schema.isactive') // check active or not
+	},
+	admno: {
+		type: String,
+		label: orion.helpers.getTranslation('students.schema.admno')
+		 // admission no
+	},
 	gender: {
 		//type: String,
 		//label: orion.helpers.getTranslation('students.schema.gender') // We use this function to make i18n work in autoform
@@ -76,12 +150,72 @@ Students.attachSchema(new SimpleSchema({
 
 			type: String,
 			label: orion.helpers.getTranslation('students.schema.gender'), // We use this function to make i18n work in autoform
-			allowedValues: [
-				orion.helpers.getTranslation('genderAllowedValues.male'),
-				orion.helpers.getTranslation('genderAllowedValues.female'),
-				orion.helpers.getTranslation('genderAllowedValues.trans')
-			]
+			/*allowedValues: [
+				orion.helpers.getTranslation('students.schema.genderAllowedValues.male'),
+				orion.helpers.getTranslation('students.schema.genderAllowedValues.female'),
+				orion.helpers.getTranslation('students.schema.genderAllowedValues.trans')
+			]*/
+			allowedValues: ['Male','Female','Transgender'],
 	},
+	Permanent_Addressline1: {
+		type: String,
+        label: orion.helpers.getTranslation('students.schema.Permanent_Addressline1'),
+    },
+    
+     Permanent_Addressline2: {
+		type: String,
+        label: orion.helpers.getTranslation('students.schema.Permanent_Addressline2'),
+    },
+    Permanent_City: {
+    	type: String,
+    	label: orion.helpers.getTranslation('students.schema.Permanent_City'),
+    },
+    Permanent_State: {
+    	type: String,
+    	label: orion.helpers.getTranslation('students.schema.Permanent_State'),
+    },
+    Permanent_Country: {
+    	type: String,
+    	label: orion.helpers.getTranslation('students.schema.Permanent_Country'),
+    },
+  	Permanent_Pincode: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Permanent_Pincode'),
+  	},
+  	Communication_Addressline1: {
+		type: String,
+        label: orion.helpers.getTranslation('students.schema.Communication_Addressline1'),
+    },
+    
+    Communication_Addressline2: {
+		type: String,
+        label: orion.helpers.getTranslation('students.schema.Communication_Addressline2'),
+    },
+    Communication_City: {
+    	type: String,
+    	label: orion.helpers.getTranslation('students.schema.Communication_City'),
+    },
+    Communication_State: {
+    	type: String,
+    	label: orion.helpers.getTranslation('students.schema.Communication_State'),
+    },
+    Communication_Country: {
+    	type: String,
+    	label: orion.helpers.getTranslation('students.schema.Communication_Country'),
+    },
+  	Communication_Pincode: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Communication_Pincode'),
+  	},
+	/*residential_address: [
+			type: String
+	]
+	*/
+
+
+	
+	
+	
 	/*
 	We add relationship to cities here
 	 */

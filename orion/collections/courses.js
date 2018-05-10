@@ -26,6 +26,7 @@ Courses = new orion.collection('courses', {
       { data: 'course_abbrev', title: orion.helpers.getTranslation('courses.schema.course_abbrev') },
       { data: 'course_fees', title: orion.helpers.getTranslation('courses.schema.course_fees')},
       { data: 'course_duration', title: orion.helpers.getTranslation('courses.schema.course_duration')},
+      
       /**
        * If you want to show a custom orion attribute in
        * the index table you must call this function
@@ -64,13 +65,18 @@ Courses.attachSchema(new SimpleSchema({
     //label: "Select One",
 
       type: String,
-      label: orion.helpers.getTranslation('courses.schema.course_durationType'), // We use this function to make i18n work in autoform
-      allowedValues: [
+      label: orion.helpers.getTranslation('courses.schema.course_durationType'),
+      allowedValues: ['Days','Months','Years'],
+       // We use this function to make i18n work in autoform
+      /*allowedValues: [
         orion.helpers.getTranslation('courses.schema.course_durationTypeAllowedValues.day'),
         orion.helpers.getTranslation('courses.schema.course_durationTypeAllowedValues.month'),
         orion.helpers.getTranslation('courses.schema.course_durationTypeAllowedValues.year')
-      ]
+      ]*/
   },
+ 
+    
+  
   /**
    * The file attribute is a custom orion attribute
    * This is where orion do the magic. Just set 
