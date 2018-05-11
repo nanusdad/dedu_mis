@@ -26,7 +26,7 @@ Courses = new orion.collection('courses', {
       { data: 'course_abbrev', title: orion.helpers.getTranslation('courses.schema.course_abbrev') },
       { data: 'course_fees', title: orion.helpers.getTranslation('courses.schema.course_fees')},
       { data: 'course_duration', title: orion.helpers.getTranslation('courses.schema.course_duration')},
-      
+
       /**
        * If you want to show a custom orion attribute in
        * the index table you must call this function
@@ -63,7 +63,6 @@ Courses.attachSchema(new SimpleSchema({
     //type: String,
     //label: orion.helpers.getTranslation('students.schema.gender') // We use this function to make i18n work in autoform
     //label: "Select One",
-
       type: String,
       label: orion.helpers.getTranslation('courses.schema.course_durationType'),
       allowedValues: ['Days','Months','Years'],

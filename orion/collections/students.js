@@ -68,6 +68,7 @@ Students = new orion.collection('students', {
 				title: orion.helpers.getTranslation('students.schema.Permanent_Pincode')
 			},
 			//Communication address:
+	
 			{
 				data: 'Communication_Addressline1',
 				title: orion.helpers.getTranslation('students.schema.Communication_Addressline1')
@@ -92,6 +93,63 @@ Students = new orion.collection('students', {
 				data:'Communication_Pincode',
 				title: orion.helpers.getTranslation('students.schema.Communication_Pincode')
 			},
+
+			{
+				data:'Mobile_Number',
+				title: orion.helpers.getTranslation('students.schema.Mobile_Number')
+			},
+			{	data: 'Telephone_Number',
+				title: orion.helpers.getTranslation('students.schema.Telephone_Number')
+			},
+			{
+				data: 'email',
+				title: orion.helpers.getTranslation('students.schema.email')
+			},
+			{
+				data: 'Contact_Center',
+				title: orion.helpers.getTranslation('students.schema.Contact_Center')
+			},
+			{
+				data: 'Batch_Type',
+				title: orion.helpers.getTranslation('students.schema.Batch_Type')
+			},
+			{
+				data: 'Dob',
+				title: orion.helpers.getTranslation('students.schema.Dob')
+			},
+			{
+				data: 'Father_Name',
+				title: orion.helpers.getTranslation('students.schema.Father_Name')
+			},
+			{
+				data: 'Mother_Name',
+				title: orion.helpers.getTranslation('students.schema.Mother_Name')
+			},
+			{
+				data: 'Gender',
+				title: orion.helpers.getTranslation('students.schema.Gender')
+			},
+			{
+				data: 'Aadhar_Number',
+				title: orion.helpers.getTranslation('students.schema.Aadhar_Number')
+			},
+			{
+				data: 'Academics',
+				title: orion.helpers.getTranslation('students.schema.Academics')
+			},
+			{
+				data:'Attendance',
+				title: orion.helpers.getTranslation('students.schema.Attendance')
+			},
+			{
+				data:'Fees',
+				title: orion.helpers.getTranslation('students.schema.Fees')
+			},
+			{
+				data:'Project',
+				title: orion.helpers.getTranslation('students.schema.Project')
+			},
+
 			/*{
 				data: 'residential_address'
 				title: orion.helpers.getTranslation('students.schema.residential_address')
@@ -157,6 +215,22 @@ Students.attachSchema(new SimpleSchema({
 			]*/
 			allowedValues: ['Male','Female','Transgender'],
 	},
+	area: orion.attribute('hasOne', {
+		label: 'Course Enrolled'
+	}, {
+		collection: Courses,
+		titleField: 'course_name',
+		publicationName: 'postCourses',
+
+		create: function (input, cb) {
+			var city = Course.insert({
+				name: input,
+				published: false
+			});
+			var newCity = Courses.findOne(course);
+			cb(newCourse);
+		}
+	}),
 	Permanent_Addressline1: {
 		type: String,
         label: orion.helpers.getTranslation('students.schema.Permanent_Addressline1'),
@@ -207,6 +281,66 @@ Students.attachSchema(new SimpleSchema({
   		type: String,
   		label: orion.helpers.getTranslation('students.schema.Communication_Pincode'),
   	},
+  	Mobile_Number: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Mobile_Number'),
+  	},
+  	Telephone_Number: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Telephone_Number'),
+  	},
+  	email: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.email'),
+  	},
+  	Contact_Center: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Contact_Center'),
+  		allowedValues: ['Chennai','Vellore','Bangalore','ODC','Hyderabad','Pune','Padhar','Kolakata','Raxaul',
+  		'Herbertpur','Delhi','Dimapur','Tezpur','Kolenchery'],
+  	},
+  	Batch_Type: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Batch_Type'),
+  	},
+  	Dob: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Dob'),
+  	},
+  	Father_Name: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Father_Name'),
+  	},
+  	Mother_Name: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Mother_Name'),
+  	},
+  	Gender: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Gender'),
+  	},
+  	Aadhar_Number: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Aadhar_Number'),
+  	},
+  	Academics: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Academics'),
+  	},
+  	Attendance: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Attendance'),
+  	},
+  	Fees: {
+  		type: String,
+  		label: orion.helpers.getTranslation('students.schema.Fees'),
+  	},
+  	Project: {
+  		 type: String,
+  		 label: orion.helpers.getTranslation('students.schema.Project'),
+  		 allowedValues: ['Yes','No'],
+  	},
+
 	/*residential_address: [
 			type: String
 	]
@@ -220,25 +354,7 @@ Students.attachSchema(new SimpleSchema({
 	We add relationship to cities here
 	 */
 
-	area: orion.attribute('hasOne', {
-		label: 'Course Enrolled'
-	}, {
-		collection: Courses,
-		titleField: 'course_name',
-		publicationName: 'postCourses',
-
-		create: function (input, cb) {
-			var city = Course.insert({
-				name: input,
-				published: false
-			});
-			var newCity = Courses.findOne(course);
-			cb(newCourse);
-		}
-
-
-
-	}),
+	
 	/**
 	 * The file attribute is a custom orion attribute
 	 * This is where orion do the magic. Just set 
