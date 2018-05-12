@@ -24,8 +24,27 @@ Courses = new orion.collection('courses', {
     columns: [
       { data: 'course_name', title: orion.helpers.getTranslation('courses.schema.course_name') },
       { data: 'course_abbrev', title: orion.helpers.getTranslation('courses.schema.course_abbrev') },
-      { data: 'course_fees', title: orion.helpers.getTranslation('courses.schema.course_fees')},
       { data: 'course_duration', title: orion.helpers.getTranslation('courses.schema.course_duration')},
+  //extension
+      { data: 'course_extension', title: orion.helpers.getTranslation('courses.schema.course_extension')},
+      { data: 'course_extensionAvailable', title: orion.helpers.getTranslation('courses.schema.course_extensionAvailable')},
+      { data: 'course_extensionPeriod', title: orion.helpers.getTranslation('courses.schema.course_extensionPeriod')},
+      { data: 'course_admissionStartDate', title: orion.helpers.getTranslation('courses.schema.course_admissionStartDate')},
+      { data: 'course_admissionEndDate', title: orion.helpers.getTranslation('courses.schema.course_admissionEndDate')},
+      { data: 'course_finalSelectionDate', title: orion.helpers.getTranslation('courses.schema.course_finalSelectionDate')},
+  //extension
+  //fees
+     /* { data: 'course_fees', title: orion.helpers.getTranslation('courses.schema.course_fees')},
+      { data: 'course_feesDescription', title: orion.helpers.getTranslation('courses.schema.course_feesDescription')},
+      { data: 'course_feesType', title: orion.helpers.getTranslation('courses.schema.course_feesType')},
+      { data: 'course_feesAmount', title: orion.helpers.getTranslation('courses.schema.course_feesAmount')},
+      { data: 'course_feesLastDate', title: orion.helpers.getTranslation('courses.schema.course_feesLastDate')},
+      { data: 'course_feesCurrency', title: orion.helpers.getTranslation('courses.schema.course_feesCurrency')},
+      { data: 'course_Sponsored', title: orion.helpers.getTranslation('courses.schema.course_Sponsored')},*/
+  //fees
+  //academics
+
+  //academics
 
       /**
        * If you want to show a custom orion attribute in
@@ -66,13 +85,42 @@ Courses.attachSchema(new SimpleSchema({
       type: String,
       label: orion.helpers.getTranslation('courses.schema.course_durationType'),
       allowedValues: ['Days','Months','Years'],
+     },
+     course_extension: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_extension'),
+      },
        // We use this function to make i18n work in autoform
+     course_extensionAvailable: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_extensionAvailable'),
+     },
+     course_extensionPeriod: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_extensionPeriod'),
+     },
+     course_admissionStartDate: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_admissionStartDate'),
+     },
+     course_admissionEndDate: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_admissionEndDate'),
+     },
+     course_finalSelectionDate: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_finalSelectionDate'),
+     },
+     course_fees: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_fees'),
+     },
       /*allowedValues: [
         orion.helpers.getTranslation('courses.schema.course_durationTypeAllowedValues.day'),
         orion.helpers.getTranslation('courses.schema.course_durationTypeAllowedValues.month'),
         orion.helpers.getTranslation('courses.schema.course_durationTypeAllowedValues.year')
       ]*/
-  },
+
  
     
   
