@@ -25,26 +25,42 @@ Courses = new orion.collection('courses', {
       { data: 'course_name', title: orion.helpers.getTranslation('courses.schema.course_name') },
       { data: 'course_abbrev', title: orion.helpers.getTranslation('courses.schema.course_abbrev') },
       { data: 'course_duration', title: orion.helpers.getTranslation('courses.schema.course_duration')},
-  //extension
+  //Start of extension
       { data: 'course_extension', title: orion.helpers.getTranslation('courses.schema.course_extension')},
       { data: 'course_extensionAvailable', title: orion.helpers.getTranslation('courses.schema.course_extensionAvailable')},
       { data: 'course_extensionPeriod', title: orion.helpers.getTranslation('courses.schema.course_extensionPeriod')},
       { data: 'course_admissionStartDate', title: orion.helpers.getTranslation('courses.schema.course_admissionStartDate')},
       { data: 'course_admissionEndDate', title: orion.helpers.getTranslation('courses.schema.course_admissionEndDate')},
       { data: 'course_finalSelectionDate', title: orion.helpers.getTranslation('courses.schema.course_finalSelectionDate')},
-  //extension
-  //fees
-     /* { data: 'course_fees', title: orion.helpers.getTranslation('courses.schema.course_fees')},
+  //End of extension
+  //Start of fees
+      { data: 'course_fees', title: orion.helpers.getTranslation('courses.schema.course_fees')},
       { data: 'course_feesDescription', title: orion.helpers.getTranslation('courses.schema.course_feesDescription')},
       { data: 'course_feesType', title: orion.helpers.getTranslation('courses.schema.course_feesType')},
       { data: 'course_feesAmount', title: orion.helpers.getTranslation('courses.schema.course_feesAmount')},
       { data: 'course_feesLastDate', title: orion.helpers.getTranslation('courses.schema.course_feesLastDate')},
       { data: 'course_feesCurrency', title: orion.helpers.getTranslation('courses.schema.course_feesCurrency')},
-      { data: 'course_Sponsored', title: orion.helpers.getTranslation('courses.schema.course_Sponsored')},*/
-  //fees
-  //academics
+      { data: 'course_feesSponsored', title: orion.helpers.getTranslation('courses.schema.course_feesSponsored')},
+  //End of fees
+  //Start of Examination
+      { data: 'course_examinations', title: orion.helpers.getTranslation('courses.schema.course_examinations')},
+      { data: 'course_examType', title: orion.helpers.getTranslation('courses.schema.course_examType')},
+      { data: 'course_examDescription', title: orion.helpers.getTranslation('courses.schema.course_examDescription')},
+      { data: 'course_examEligible', title: orion.helpers.getTranslation('courses.schema.course_examEligible')},
+      { data: 'course_examGrade', title: orion.helpers.getTranslation('courses.schema.course_examGrade')},
+ //End of Examination
+      { data: 'course_documentation', title: orion.helpers.getTranslation('courses.schema.course_documentation')},
+      { data: 'course_shipments', title: orion.helpers.getTranslation('courses.schema.course_shipments')},
+      { data: 'course_communications', title: orion.helpers.getTranslation('courses.schema.course_communications')},
+      { data: 'course_graduation', title: orion.helpers.getTranslation('courses.schema.course_graduation')},
+      { data: 'course_sales', title: orion.helpers.getTranslation('courses.schema.course_sales')},
+      { data: 'course_requests', title : orion.helpers.getTranslation('courses.schema.course_requests')},
+      { data: 'courses_slots', title: orion.helpers.getTranslation('courses.schema.courses_slots')},
+      { data: 'course_slotRequestSequenceNumber', title: orion.helpers.getTranslation('courses.schema.course_slotRequestSequenceNumber')},
+      { data: 'course_slotAllocated', title: orion.helpers.getTranslation('courses.schema.course_slotAllocated')},
 
-  //academics
+
+  
 
       /**
        * If you want to show a custom orion attribute in
@@ -64,28 +80,32 @@ Courses = new orion.collection('courses', {
 Courses.attachSchema(new SimpleSchema({
   course_name: {
     type: String,
-    label: orion.helpers.getTranslation('courses.schema.course_name') // We use this function to make i18n work in autoform
+    label: orion.helpers.getTranslation('courses.schema.course_name'), // We use this function to make i18n work in autoform
   },
   course_abbrev: {
     type: String,
-    label: orion.helpers.getTranslation('courses.schema.course_abbrev') // We use this function to make i18n work in autoform
+    label: orion.helpers.getTranslation('courses.schema.course_abbrev'), // We use this function to make i18n work in autoform
   },
-  course_fees: {
+
+  course_duration:{
     type: Number,
-    label: orion.helpers.getTranslation('courses.schema.course_fees')
+    label: orion.helpers.getTranslation('courses.schema.course_duration'),
   },
-  course_duration: {
+  course_durationCount: {
     type: Number,
-    label: orion.helpers.getTranslation('courses.schema.course_duration')
+    label: orion.helpers.getTranslation('courses.schema.course_durationCount'),
   },
- course_durationType: {
+
+   course_durationPeriod: {
     //type: String,
     //label: orion.helpers.getTranslation('students.schema.gender') // We use this function to make i18n work in autoform
     //label: "Select One",
       type: String,
-      label: orion.helpers.getTranslation('courses.schema.course_durationType'),
+      label: orion.helpers.getTranslation('courses.schema.course_durationPeriod'),
       allowedValues: ['Days','Months','Years'],
      },
+  
+
      course_extension: {
       type: String,
       label: orion.helpers.getTranslation('courses.schema.course_extension'),
@@ -100,21 +120,102 @@ Courses.attachSchema(new SimpleSchema({
       label: orion.helpers.getTranslation('courses.schema.course_extensionPeriod'),
      },
      course_admissionStartDate: {
-      type: String,
+      type: Date,
       label: orion.helpers.getTranslation('courses.schema.course_admissionStartDate'),
      },
      course_admissionEndDate: {
-      type: String,
+      type: Date,
       label: orion.helpers.getTranslation('courses.schema.course_admissionEndDate'),
      },
      course_finalSelectionDate: {
-      type: String,
+      type: Date,
       label: orion.helpers.getTranslation('courses.schema.course_finalSelectionDate'),
      },
-     course_fees: {
-      type: String,
-      label: orion.helpers.getTranslation('courses.schema.course_fees'),
+    course_fees: {
+    type: Number,
+    label: orion.helpers.getTranslation('courses.schema.course_fees'),
      },
+     course_feesDescription: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_feesDescription'),
+     },
+     course_feesType: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_feesType'),
+     },
+     course_feesAmount:{
+      type: Number,
+      label: orion.helpers.getTranslation('courses.schema.course_feesAmount'),
+     },
+     course_feesLastDate: {
+      type: Date,
+      label: orion.helpers.getTranslation('courses.schema.course_feesLastDate'),
+     },
+     course_feesCurrency: {
+      type: Number,
+      label: orion.helpers.getTranslation('courses.schema.course_feesCurrency'),
+     },
+     course_feesSponsored: {
+      type: Boolean,
+      label: orion.helpers.getTranslation('courses.schema.course_feesSponsored'),
+     },
+     course_examinations: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_examinations'),
+     },
+     course_examType: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_examType'),
+     },
+     course_examDescription: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_examDescription'),
+     },
+     course_examEligible: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_examEligible'),
+     },
+     course_examGrade: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_examGrade'),
+     },
+     course_documentation: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_documentation'),
+     },
+     course_shipments: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_shipments'),
+     },
+     course_communications: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_communications'),
+     },
+     course_graduation: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_graduation'),
+     },
+     course_sales: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_sales'),
+     },
+     course_requests: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_requests'),
+     },
+     courses_slots: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.courses_slots'),
+     },
+     course_slotRequestSequenceNumber: {
+      type: String,
+      label: orion.helpers.getTranslation('courses.schema.course_slotRequestSequenceNumber'),
+     },
+     course_slotAllocated: {
+      type: Boolean,
+      label: orion.helpers.getTranslation('courses.schema.course_slotAllocated'),
+     },
+
       /*allowedValues: [
         orion.helpers.getTranslation('courses.schema.course_durationTypeAllowedValues.day'),
         orion.helpers.getTranslation('courses.schema.course_durationTypeAllowedValues.month'),
