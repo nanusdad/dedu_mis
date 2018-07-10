@@ -5,6 +5,7 @@
  * We can set options to that new collection, like which fields 
  * we will show in the index of the collection in the admin
  */
+ var title=''
 Students = new orion.collection('students', {
 	singularName: orion.helpers.getTranslation('students.singularName'), // The name of one of this items
 	pluralName: orion.helpers.getTranslation('students.pluralName'), // The name of more than one of this items
@@ -302,9 +303,10 @@ Students.attachSchema(new SimpleSchema({
   	Batch_Type: {
   		type: String,
   		label: orion.helpers.getTranslation('students.schema.Batch_Type'),
+  		allowedValues: ['Non-government', 'Government'],
   	},
   	Dob: {
-  		type: String,
+  		type: Date,
   		label: orion.helpers.getTranslation('students.schema.Dob'),
   	},
   	Father_Name: {

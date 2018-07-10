@@ -59,9 +59,6 @@ Courses = new orion.collection('courses', {
       { data: 'course_slotRequestSequenceNumber', title: orion.helpers.getTranslation('courses.schema.course_slotRequestSequenceNumber')},
       { data: 'course_slotAllocated', title: orion.helpers.getTranslation('courses.schema.course_slotAllocated')},
 
-
-  
-
       /**
        * If you want to show a custom orion attribute in
        * the index table you must call this function
@@ -138,10 +135,12 @@ Courses.attachSchema(new SimpleSchema({
      course_feesDescription: {
       type: String,
       label: orion.helpers.getTranslation('courses.schema.course_feesDescription'),
+      allowedValues: ['Course fee','Exam fee','Application fee','Book fee','Convocation fee'],
      },
      course_feesType: {
       type: String,
       label: orion.helpers.getTranslation('courses.schema.course_feesType'),
+      allowedValues: ['Full payment','Installment'],
      },
      course_feesAmount:{
       type: Number,
@@ -154,6 +153,7 @@ Courses.attachSchema(new SimpleSchema({
      course_feesCurrency: {
       type: Number,
       label: orion.helpers.getTranslation('courses.schema.course_feesCurrency'),
+      allowedValues: ['Rupees','Dollars'],
      },
      course_feesSponsored: {
       type: Boolean,
@@ -221,9 +221,6 @@ Courses.attachSchema(new SimpleSchema({
         orion.helpers.getTranslation('courses.schema.course_durationTypeAllowedValues.month'),
         orion.helpers.getTranslation('courses.schema.course_durationTypeAllowedValues.year')
       ]*/
-
- 
-    
   
   /**
    * The file attribute is a custom orion attribute
@@ -240,7 +237,6 @@ Courses.attachSchema(new SimpleSchema({
   createdBy: orion.attribute('createdBy'),
   createdAt: orion.attribute('createdAt')
 }));
-
 
 /**
  * Using dburles:collection-helpers we will add a helper to the courses
